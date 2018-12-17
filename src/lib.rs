@@ -33,18 +33,24 @@ use std::ops::{Div, DivAssign};
 use std::ops::{Mul, MulAssign};
 use std::ops::{Sub, SubAssign};
 
-#[derive(Debug, PartialEq)]
+/// Representation of a specific hex location.
+#[derive(Debug, PartialEq, Copy, Clone)]
 pub struct Hex {
+    /// Horizontal position of hex.
     pub q: i32,
+    /// Vertical position of hex.
     pub r: i32,
+    /// Offset position of hex.
     pub s: i32,
 }
 
 impl Hex {
+    /// Create a new Hex and return it to the caller.
     pub fn new(q: i32, r: i32, s: i32) -> Self {
         Hex { q, r, s }
     }
 
+    /// Calculate the distance between the current hex and `other`.
     pub fn distance(self, other: Hex) -> usize {
         let l = self - other;
         ((l.q.abs() + l.r.abs() + l.s.abs()) / 2) as usize
