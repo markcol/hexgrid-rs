@@ -37,4 +37,4 @@ script:
   - cargo build --verbose
   - cargo doc --verbose
   - cargo test --verbose
-  - cargo clippy --all-targets --all-features -- -D warnings
+  - cargo clippy --all-targets --all-features #  -D warnings
