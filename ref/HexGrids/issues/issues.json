@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 900,
+    "Title": "CA1804 : Remove unused locals in ThreadExceptionHandler.cs"
+  },
+  {
+    "Id": 920,
+    "Title": "No overload for method 'GetPath' takes 2 arguments"
+  },
+  {
+    "Id": 1281,
+    "Title": "Remove .pfx key"
+  }
+]

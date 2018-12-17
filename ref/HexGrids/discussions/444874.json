@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1048192",
+    "ThreadId": "444874",
+    "Html": "\r\n<div dir=\"ltr\">\r\n<div>In the path finder algorithm, why do you switch between the two types of priority queues?</div>\r\n<div><br>\r\n</div>\r\n<div>Does the heap queue perform better when the range is longer and does the dictionary queue perform better when the range is shorter?</div>\r\n<div><br>\r\n</div>\r\n<div>var queue = goal.Range(start) &gt; RangeCutoff</div>\r\n<div>? (IPriorityQueue&lt;uint, Path2&gt;) new HeapPriorityQueue&lt;uint, Path2&gt;()</div>\r\n<div>: (IPriorityQueue&lt;uint, Path2&gt;) new DictPriorityQueue&lt;uint, Path2&gt;();</div>\r\n</div>\r\n",
+    "PostedDate": "2013-05-24T05:41:36.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1048459",
+    "ThreadId": "444874",
+    "Html": "Yes, the heap-queue is more efficient, particularly at longer range. The dictionary queue chooses better &quot;shaped&quot; paths from equal &quot;optimal-length&quot; paths.<br />\n<br />\nI have added an example of this to the (imminent) next release. Directions are in the tool-tip text for the new tool-strip control; let me know if they are insufficiently clear.<br />\n<br />\nIllustrative code now uploaded in V 5.2<br />\n",
+    "PostedDate": "2013-05-24T14:20:17.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

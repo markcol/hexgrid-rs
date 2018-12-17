@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Change Set # 26593 contains a modified MapDisplay.cs that corrects this issue (as well as the slow performance from the nested retrieval of a SystemFont). \n\nThe only current distinction between IPath and IDirectedPath is in display, so the test for definition of PathFwd here was unnecessary.",
+    "ClosedDate": "2013-08-02T08:16:49.37-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In the MapDisplay.cs source code I am getting the following error when I try to compile the source code dated July 7 in the HexGridExample.sln:\n\n\"No overload for method 'GetPath' takes 2 arguments\"\n\nThe MapDisplay.cs file is in the HexGridExample2 folder.\n\nCode Snippet:\n\n```\n#if PathFwd\n    public          IDirectedPath Path       { \n      get { return _path ?? ( IsPassable(StartHex) && IsPassable(GoalHex) \n                          ? (_path = this.GetDirectedPath(this[StartHex], this[GoalHex])) : null); } \n    } IDirectedPath _path;\n#else\n\t\tpublic IPath Path\n\t\t{\n\t\t\tget { return _path ?? (_path = this.GetPath(StartHex, GoalHex)); }\n\t\t} IPath _path;\n#endif\n\n```\nThank you,\n  Bryan",
+    "LastUpdatedDate": "2013-08-02T08:16:49.37-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "HexGridUtilities",
+    "ReportedDate": "2013-08-01T07:05:03.127-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "No overload for method 'GetPath' takes 2 arguments",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 920
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "oops, I forgot to say that the line in error is the one that starts with \"public IPath Path\"",
+      "PostedDate": "2013-08-01T07:07:01.137-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Bryn,\r\n\r\nThank you for the notification; Looking into it now. \r\n\r\nPieter",
+      "PostedDate": "2013-08-02T07:31:39.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-08-02T08:16:49.37-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

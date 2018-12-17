@@ -1,0 +1,55 @@
+<div class="wikidoc">The behaviour of the FOV determination is controlled by the arguments supplied to the method <b>ShadowCasting.ComputeFIeldOfView()</b>:<br /><pre>
+    /// &lt;summary&gt;&lt;/summary&gt;
+    /// &lt;remarks&gt;
+    /// Takes a circle in the form of a center point and radius, and a function
+    /// that can tell whether a given cell is opaque. Calls the setFoV action on
+    /// every cell that is both within the radius and visible from the center. 
+    /// &lt;/remarks&gt;
+    /// &lt;param name=&quot;observerCoords&quot;&gt;Cordinates of observer;s hex.&lt;/param&gt;
+    /// &lt;param name=&quot;radius&quot;&gt;Maximum radius for Field-of-View.&lt;/param&gt;
+    /// &lt;param name=&quot;observerHeight&quot;&gt;Height (ASL) of the observer&#39;s eyes.&lt;/param&gt;
+    /// &lt;param name=&quot;targetHeight&quot;&gt;Returns ground level (ASL) of supplied hex.&lt;/param&gt;
+    /// &lt;param name=&quot;terrainHeight&quot;&gt;Returns height (ASL) of terrain in supplied hex.&lt;/param&gt;
+    /// &lt;param name=&quot;setFoV&quot;&gt;Sets a hex as visible in the Field-of-View.&lt;/param&gt;
+    public static void ComputeFieldOfView(
+      ICoordsCanon            observerCoords, 
+      int                     radius, 
+      int                     observerHeight,
+      Func&lt;ICoordsCanon,bool&gt; isOnBoard,
+      Func&lt;ICoordsCanon,int&gt;  targetHeight, 
+      Func&lt;ICoordsCanon,int&gt;  terrainHeight,
+      Action&lt;ICoordsCanon&gt;    setFoV
+) { /* ... */ }
+</pre>
+<ul><li>It is important for realisism that <b>observerHeight &gt; board[observerCoords].ElevationASL</b>, or no parallax over the current ground elevation will be observed. </li>
+<li><i>TerrainHeight</i> is the ElevationASL plus the height of any blocking in the hex, usually due to terrain but sometimes occuppying units will block vision as well. Control this in the implementation of <b>IBoard</b>.</li>
+<li>If the height <i>unit</i> is taken as 5&#39;, then the contour levels on the Terrain Map are at 50&#39; (5&#39; * 10) and the woods generate a terrain height of 35&#39; (5&#39; * 7). The observer and target will then be at ElevationASL + 5&#39;.</li>
+<li>If symmetry is desired (which is normal when testing and perhaps for <i>speculative</i> FOV determination in a game situation) then the function used to determine the <b>targetHeight</b> should be the same as that used to determine <b>observerHeight</b></li>
+<li>By default the engine supplies three target modes, and uses the first in the examples:</li></ul>
+<pre>
+        switch (targetMode) {
+          case FovTargetMode.EqualHeights: 
+            observer = board[origin].ElevationASL + 1;
+            target   = canon =&gt; board[canon.User].ElevationASL + 1;
+            break;
+          case FovTargetMode.TargetHeightEqualZero:
+            observer = board[origin].HeightObserver;
+            target   = canon =&gt; board[canon.User].ElevationASL;
+            break;
+          default:
+          case FovTargetMode.TargetHeightEqualActual:
+            observer = board[origin].HeightObserver;
+            target   = canon =&gt; board[canon.User].HeightTarget;
+            break;
+        }
+        if (observer &gt; 0) 
+          ShadowCasting.ComputeFieldOfView(
+            origin.Canon, 
+            range, 
+            observer,
+            canon=&gt;board.IsOnBoard(canon.User),
+            target,
+            canon=&gt;board[canon.User].HeightTerrain,
+            canon=&gt;fov[canon.User] = true
+          );
+</pre></div><div class="ClearBoth"></div>

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1084464",
+    "ThreadId": "454424",
+    "Html": "I am making a tank game in unity. The levels are pretty simple. Flat 2d plane with a boundary wall (like an arena) and maze like walls in the level. Can I use this A* implementation for path finding in my game? there are some obstacles as well .. but they are just cubes, no irregular shapes etc. I see your utility is called hex grid, will it work for my scenario? I was looking for grid graph initially.\r<br />\nAlso, now i read you have seperated out the logic from UI, so I am hopping I could use it in my game. Any pointers where I should start?<br />\n",
+    "PostedDate": "2013-08-24T08:18:09.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1084758",
+    "ThreadId": "454424",
+    "Html": "I have not worked with Unity, so I cannot comment directly on your first question. \r<br />\n<br />\nHowever as you noted, the library <strong>HexUtilities.dll</strong> is independent of the WinForms implementation used in the example, so it should be possible. You will want to reference either the class <strong>HexGrid</strong> or <strong>HexBoard</strong> I suspect as your starting point. \r<br />\n<br />\nThe algorithms do assume the existence of a hexagonal grid defining the connectivity,\r<br />\n<br />\nCall back with ay specific problems you encounter<br />\n",
+    "PostedDate": "2013-08-25T18:22:31.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1105547",
+    "ThreadId": "454424",
+    "Html": "Hi! \r<br />\nNeat stuff!\r<br />\n<br />\nI do work on Unity3d project as well. Unity uses Mono implementation and not higher than 3.5... So there are issues expected even with the library.\r<br />\n<br />\nSo far the affected areas are: System.Threading, System.Drawing, ISet. \r<br />\n<br />\nIs there a plan to adapt the library to be more platform independent and probably support .Net 3.5? Or any suggestions how can I do it by myself?\r<br />\n<br />\nThanks!\r<br />\nSergey<br />\n",
+    "PostedDate": "2013-10-09T08:43:38.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1106540",
+    "ThreadId": "454424",
+    "Html": "Hi Sergey,\r<br />\n<br />\nThank you for the compliment.\r<br />\n<br />\nNo, I have no plans to support older versions of he Framework <em>in the official releases</em>. However I will certainly assist you with any specific issues you encounter with porting the library back to an older Framework.\r<br />\n<br />\nTo consider the case of the new <em>async/await</em> functionality introduced in 4.5: All the Async methods (such as GetFieldOfViewAsync) are implemented in terms of the synchronous methods named without the Async suffix (ie GetFIeldOfView) in accordance with the DotNet standard. You can either choose to simply call the synchronous method, or hand-roll your own asynchronous wrapper. \r<br />\n<br />\nHowever I might be convinced to create conditional compilation constants for the different framework versions, and to put specific uses of certain newer features inside those. Let me think on that.\r<br />\n<br />\nRegards,\r<br />\n<br />\nPieter<br />\n",
+    "PostedDate": "2013-10-11T11:17:01.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

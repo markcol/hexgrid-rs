@@ -1,0 +1,327 @@
+[
+  {
+    "Id": "0",
+    "Name": "V 6.2 - minor changes only",
+    "DevelopmentStatus": "Beta",
+    "Description": "Much dead code pruned, and many comments added as part of building preliminary code documentation with Doxygen .",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-07-09T22:04:30.9-07:00",
+    "Files": [
+      {
+        "Id": "fbb56254-7225-4189-bce6-95b30209a094",
+        "FileName": "HexGridUtilities V 6.2 Binaries.zip",
+        "Url": "./0/fbb56254-7225-4189-bce6-95b30209a094",
+        "Type": "Application",
+        "UploadDate": "2013-07-09T22:02:38.02-07:00"
+      },
+      {
+        "Id": "bf2b6d84-ceb2-4169-a71f-5d98c2ce36f0",
+        "FileName": "HexGridUtilities V 6.2 Source.zip",
+        "Url": "./0/bf2b6d84-ceb2-4169-a71f-5d98c2ce36f0",
+        "Type": "Source Code",
+        "UploadDate": "2013-07-09T22:02:38.067-07:00"
+      },
+      {
+        "Id": "69d575c9-214d-4fa2-a52b-3783c00061e7",
+        "FileName": "HexGridUtilities V 6.2 CodeDocs.zip",
+        "Url": "./0/69d575c9-214d-4fa2-a52b-3783c00061e7",
+        "Type": "Documentation",
+        "UploadDate": "2013-07-09T22:02:38.16-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "V 6.1 Lightning-Fast ALT Bidirectional Pathfinding",
+    "DevelopmentStatus": "Stable",
+    "Description": "# Upgraded to Visual Studio 2012\n# Added *BidirectionalPathfinder* class (using *ALT*) that runs 240 times faster than previous using:\n** A (serial) implementation of New Parallel Bidirectional A*;\n** Heap-on-Top priority queue implementation; \n** A 32x32 *BlockedBoardStorage* class that improves caching of board details;\n** Implementation of *ALT* (*A** with *L*andmarks and *T*riangle-inequality heuristic); and\n** A few scattered miscellaneous code improvements\n# Additional basic functionality pushed into the *HexBoard* utility class from the examples, including the *BoardStorage.* abstraction discussed above.\n\nThis faster A* implementation decreases the time for my most complex case (two long diagonals on a 750 x 420 terrain map) from 860 ms and 1,550 ms to under 5 ms. Total nodes expanded decreases from 160,000 and 230,000 respectively to 1,600, of over 330,000 on the whole board.\n\nPreprocessing of 8 landmarks (4 corners and the midpoints of all 4 sides) runs in about 4 seconds in parallel on an i7 using a simple Dijkstra's implementation, for a 760 x 420 terrain map.\n\nThe two cases are the same path in opposite directions, so the Bidirectional implementation now merges them to the same test case.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-07-07T18:16:07.033-07:00",
+    "Files": [
+      {
+        "Id": "f9de3999-9829-4fde-a674-343188e3714e",
+        "FileName": "HexGridUtilities V 6.1 Binaries.zip",
+        "Url": "./1/f9de3999-9829-4fde-a674-343188e3714e",
+        "Type": "Application",
+        "UploadDate": "2013-07-07T18:16:06.843-07:00"
+      },
+      {
+        "Id": "4fb58f6a-cc9c-4bd1-b671-5e4fe4275427",
+        "FileName": "HexGridUtilities V 6.1 Source.zip",
+        "Url": "./1/4fb58f6a-cc9c-4bd1-b671-5e4fe4275427",
+        "Type": "Application",
+        "UploadDate": "2013-07-07T18:16:06.877-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "V6.0 - Faster (Bidirectional) PathFinding",
+    "DevelopmentStatus": "Stable",
+    "Description": "# Upgraded to Visual Studio 2012\n# Added *BidirctionalPathfinder* class that runs 2-3 times faster than previous using:\n## A (serial) implementation of New Parallel Bidirectional A*;\n## Heap-on-Top priority queue implementation; \n## A 32x32 *LayeredBoardStorage* class that improves caching of board details;\n## A few scattered miscellaneous code improvements\n# Additional basic functionality pushed into the *HexBoard* utility class from the examples, including the *BoardStorage.* abstraction discussed above.\n\nThis faster A* implementation decreases the time for my most complex case (two long diagonals on a 750 x 420 terrain map) from 0.86 and 1.55 seconds to 0.43 seconds. Total nodes expanded decreases from 160,000 and 230,000 respectively to 80,000, of over 330,000 on the whole board..\n\nThe two cases are the same path in opposite directions, so the Bidirectional implementation now merges them to the same test case.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-07-05T17:15:45.38-07:00",
+    "Files": [
+      {
+        "Id": "af7a851b-18cf-487d-acdf-e83ea2cfe4ca",
+        "FileName": "HexGridUtilities V6 Binaries.zip",
+        "Url": "./2/af7a851b-18cf-487d-acdf-e83ea2cfe4ca",
+        "Type": "Application",
+        "UploadDate": "2013-07-05T17:15:45.067-07:00"
+      },
+      {
+        "Id": "94bf46c5-8555-4207-8f86-446884965294",
+        "FileName": "HexGridUtilities V6 Source.zip",
+        "Url": "./2/94bf46c5-8555-4207-8f86-446884965294",
+        "Type": "Application",
+        "UploadDate": "2013-07-05T17:15:45.177-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "3",
+    "Name": "Verson 5.3",
+    "DevelopmentStatus": "Beta",
+    "Description": "# Almost doubled the speed of *PathFinding*, (benchmark time reduced from 3.0 sec to 1.7 sec) by:\n## Using a more efficient *PrioirtyQueue* implementation (courtesy of Microsoft;\n## Converting *HexCoords* to a struct, eliminating *ICoords*, and converting *CustomCoords* to  a static class with extension methods for *HexCoords*; and\n## Adding an explicit Open hashset to reduce height of the minHeap used by *ConcurrentPrioirtyQueue*.\n## Roll up change-sets: \n** 25127 & 25128 - More comments.\n** 25130 & 25199: PathFinderFwd  added; Hexside & HexsideIndex re-jigged.\n\nThe benchmark is a long diagonal path on a terrain map of ~ 420 x 750 hexagons, with:\n* More than 250,000 hexagons in the closed set;\n* Nearly 6,000 hexagons in the open set (now down from > 12,000!); and\n* More than 1,000 steps in the optimum path.\n\nAll other paths that I have tested on this map are found faster, usually in less than 1.0 sec.  The test machine is an Intel i7 running Windows 7 Professional. Only 1 CPU-thread is currently used by the benchmark.\n\n*Update:*  \nIt is possible to squeeze out another 8-10% by removing all *lock (_syncLock)* statements from the **ConcurrentPriorityQueue** implementtation, , making it non-concurrent and reducing the benchmark time down to about 1.55 sec. However I am still looking at a possible parallel implementation, which would require the Concurrent implementation.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-06-06T23:05:55.13-07:00",
+    "Files": [
+      {
+        "Id": "e2f881ba-0c58-4947-99ee-7a330932521c",
+        "FileName": "HexridUtilities V 5.3 - Binaries.zip",
+        "Url": "./3/e2f881ba-0c58-4947-99ee-7a330932521c",
+        "Type": "Application",
+        "UploadDate": "2013-06-06T20:49:19.823-07:00"
+      },
+      {
+        "Id": "81caa0be-2c28-44e8-ab42-bd65d1aca2ba",
+        "FileName": "HexridUtilities V 5.3 - Source.zip",
+        "Url": "./3/81caa0be-2c28-44e8-ab42-bd65d1aca2ba",
+        "Type": "Source Code",
+        "UploadDate": "2013-06-06T23:05:53.413-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "4",
+    "Name": "Veresion 5.2",
+    "DevelopmentStatus": "Beta",
+    "Description": "# Rearranged namespaces and folder locations for better navigation;\n# Added an example of Path-type selection to HexgridExample2;\n# Eliminated (need for) NaviagableBoard and FovBoard methods in IHexBoard;\n# Rolled Coords.cs into HexCoords.cs and eliminated the base class Coords.cs;\n# Renamed IPath2, Path2 and PathFinder2 back to IPath, Path, and PathFinder, as new namespace guareantees uniqueness vs old implementations;\n# Tidy up Debug Tracing;\n# Prevent inadvertent client overwrite of FOV details by making setter internal-access only; and\n# Removed old Version 4 example and library.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-05-24T15:10:45.39-07:00",
+    "Files": [
+      {
+        "Id": "f49247f0-1457-48cd-a601-336cabda2345",
+        "FileName": "HexGridExample2-Binaries-AnyCPU V5.2.zip",
+        "Url": "./4/f49247f0-1457-48cd-a601-336cabda2345",
+        "Type": "Application",
+        "UploadDate": "2013-05-24T15:10:45.25-07:00"
+      },
+      {
+        "Id": "0efbbaa9-c0c3-4bbc-9da9-12840a6ea036",
+        "FileName": "HexGridExample2-Source V5.2.zip",
+        "Url": "./4/0efbbaa9-c0c3-4bbc-9da9-12840a6ea036",
+        "Type": "Source Code",
+        "UploadDate": "2013-05-24T15:10:45.263-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "5",
+    "Name": "Version 5.1",
+    "DevelopmentStatus": "Beta",
+    "Description": "Refactoring to tidy interface nearly. The key classes are now renamed to:\n* Hex\n* HexBoard\n* HexCoords\n* HexGrid\n* (for *WinForms* users) HexgridPanel",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-05-21T21:37:00.273-07:00",
+    "Files": [
+      {
+        "Id": "1f37201a-d158-4d21-a0d5-8c032ef3ade5",
+        "FileName": "HexGridExample2-Binaries V 5.1.zip",
+        "Url": "./5/1f37201a-d158-4d21-a0d5-8c032ef3ade5",
+        "Type": "Application",
+        "UploadDate": "2013-05-21T21:37:00.087-07:00"
+      },
+      {
+        "Id": "feb41167-0885-4dc0-9c85-25ababb5708f",
+        "FileName": "HexGridExample2-Source V5.1.zip",
+        "Url": "./5/feb41167-0885-4dc0-9c85-25ababb5708f",
+        "Type": "Source Code",
+        "UploadDate": "2013-05-21T21:37:00.147-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "6",
+    "Name": "Version 5.0",
+    "DevelopmentStatus": "Beta",
+    "Description": "Separated *Utilities.dll** into two separate files:\n1. *HexUtilities.dll* comprising just the bare utilities; and\n2. *HexGridPanel.dll* comprising a *WinForms* implementation of a Hex-grid Panel, using *HexUtilities.dll*.\n\nAlso, the interfaces have been reworked to make the distinction between Canon and User coordinates immaterial to all client code. This resulted in significant simplification of the client-visible interfaces. \n\nIf the *Winforms** implementation is not desired, the abstract class _MapBoard_ can either be used as the base for a custom implementation, or the individual utilities can be accessed directly through their static methods. \n\nIn all cases usage examples are readily available in the _MapBoard_ code as well as in *HexGridExample2**.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-05-19T20:29:08.297-07:00",
+    "Files": [
+      {
+        "Id": "8cde528f-039e-4e53-a346-da2c6459472c",
+        "FileName": "HexGridExample-Binaries V 5.0.zip",
+        "Url": "./6/8cde528f-039e-4e53-a346-da2c6459472c",
+        "Type": "Application",
+        "UploadDate": "2013-05-19T20:29:08.077-07:00"
+      },
+      {
+        "Id": "5f75ff23-83f1-4054-aca4-4085150ab1bb",
+        "FileName": "HexGridUtilities-Source V5.0.zip",
+        "Url": "./6/5f75ff23-83f1-4054-aca4-4085150ab1bb",
+        "Type": "Application",
+        "UploadDate": "2013-05-19T20:29:08.123-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "7",
+    "Name": "Version 4",
+    "DevelopmentStatus": "Stable",
+    "Description": "This is a *breaking change*, though one I believe will be worth the pain. The project has been substantially reworked while being fully integrated to the library as used in my gaming engine. The gaming engine now uses the code exactly as published here, which will help to ensure that this publication is kept up-to-date.\n\nI believe the current code is more robust, and easier to read and use, as a result of the integration. Some dead code has been removed, and several minor enhancements incorporated. (*Mouse-wheel zoom* and *mouse-wheel scrolling* two of the latest, though I frankly forgot to keep track.)\n\nOne change of note is that *Path Finding* now supports two modes, selected by setting *PathFInder.RangeCutoff*. The original algorithm, which maintains agent orientation to target but runs somewhat slower, is used at ranges less than or equal to this value; a faster algorithm which does not maintain agent orientation to target is used at greater ranges. The Line-of-Sight limit is a convenient value to use for the cut-off.\n\nThe difference is whether *DictPrioirtyQueue* or *HeapPrioirtyQueue* is used to maintain the Open List for the A-* implementation. The former provides a stable sort, maintaining the agent orientation, while the latter does not.\n\nAdditionally, the *MIT Licence* for this project has been properly incorporated into all source files, as well as being available on disk as a text file.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-04-28T15:18:45.777-07:00",
+    "Files": [
+      {
+        "Id": "9b64a67f-c84c-4b63-bc15-42ff483a577c",
+        "FileName": "HexGridExample-Binaries V4-0.zip",
+        "Url": "./7/9b64a67f-c84c-4b63-bc15-42ff483a577c",
+        "Type": "Application",
+        "UploadDate": "2013-04-28T15:18:45.433-07:00"
+      },
+      {
+        "Id": "8caaad14-1dde-46e8-9f99-49f1c8f58990",
+        "FileName": "HexGridExample-Source V4-0x.zip",
+        "Url": "./7/8caaad14-1dde-46e8-9f99-49f1c8f58990",
+        "Type": "Source Code",
+        "UploadDate": "2013-04-28T15:18:45.37-07:00"
+      },
+      {
+        "Id": "cae24ee4-6bdc-4a97-9eba-37e4cff19ee8",
+        "FileName": "HexGridExample-Documentation V4-0.zip",
+        "Url": "./7/cae24ee4-6bdc-4a97-9eba-37e4cff19ee8",
+        "Type": "Documentation",
+        "UploadDate": "2013-04-28T15:18:45.463-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "8",
+    "Name": "Version 3",
+    "DevelopmentStatus": "Stable",
+    "Description": "1) Added TerrainMap example;\n2) Added demonstration of Shadow-Casting Field-of-View on both maps; and\n3) Removed reference web pages out of source download to make it a more reasonable size.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-02-24T15:02:36.163-08:00",
+    "Files": [
+      {
+        "Id": "f03e2ce6-b032-4de4-a54c-1b28256b0536",
+        "FileName": "HexGridUtilities-Binaries 3.zip",
+        "Url": "./8/f03e2ce6-b032-4de4-a54c-1b28256b0536",
+        "Type": "Application",
+        "UploadDate": "2013-02-24T14:59:57.273-08:00"
+      },
+      {
+        "Id": "6c3bf8a6-54bf-473e-b96a-551ce01f909f",
+        "FileName": "HexGridUtilities-Source 3.zip",
+        "Url": "./8/6c3bf8a6-54bf-473e-b96a-551ce01f909f",
+        "Type": "Application",
+        "UploadDate": "2013-02-24T14:59:57.29-08:00"
+      }
+    ]
+  },
+  {
+    "Id": "9",
+    "Name": "V 2.0 - Various Enhancements",
+    "DevelopmentStatus": "Stable",
+    "Description": "1) Abstracted MapBoard and MapDisplay functionality into separate classes;\n2) Corrected PathFinder to use -1 as Impassable flag instead of 999;\n3) Added demonstration of simple map transposition to HexGridExample; and\n4) Code clean-up for better exposition of principles.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-02-23T14:01:27.25-08:00",
+    "Files": [
+      {
+        "Id": "7b59cc25-9e70-4aff-bb0c-042184c32ebe",
+        "FileName": "HexGridExample-Binaries V2-0.zip",
+        "Url": "./9/7b59cc25-9e70-4aff-bb0c-042184c32ebe",
+        "Type": "Application",
+        "UploadDate": "2013-02-23T13:52:41.547-08:00"
+      },
+      {
+        "Id": "593e1d74-195b-4e09-8975-ecea1d4a702d",
+        "FileName": "HexGridExample-Source V2-0.zip",
+        "Url": "./9/593e1d74-195b-4e09-8975-ecea1d4a702d",
+        "Type": "Application",
+        "UploadDate": "2013-02-23T14:00:07.317-08:00"
+      }
+    ]
+  },
+  {
+    "Id": "10",
+    "Name": "Version V1.2",
+    "DevelopmentStatus": "Stable",
+    "Description": "1) Defined conversions for Custom Coordinates in terms of User Coordinates instead of in terms of Canonical Coordinates, as more intuitive.\n2) Added example of Custom Coordnates to HexGridExampleForm.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-02-22T09:27:34.56-08:00",
+    "Files": [
+      {
+        "Id": "7d6e4339-471c-4516-915e-f4e1a6fef255",
+        "FileName": "HexGridUtilities-Binaries 2.zip",
+        "Url": "./10/7d6e4339-471c-4516-915e-f4e1a6fef255",
+        "Type": "Application",
+        "UploadDate": "2013-02-22T09:27:34.183-08:00"
+      },
+      {
+        "Id": "b50d9e09-a795-412e-899b-fe3516da282c",
+        "FileName": "HexGridUtilities-Source 2.zip",
+        "Url": "./10/b50d9e09-a795-412e-899b-fe3516da282c",
+        "Type": "Application",
+        "UploadDate": "2013-02-22T09:27:34.277-08:00"
+      }
+    ]
+  },
+  {
+    "Id": "11",
+    "Name": "Version 4.1",
+    "DevelopmentStatus": "Planning",
+    "Description": "Next up is to implement a path-finding enhancement using **Total Clearance**, to accommodate units moving in a fixed organization wider than a single hex. (Essentially, units more than a single hex _wide_.)  I am hoping that perhaps by end of May I can have this ready for release.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-04-29T15:43:57.597-07:00",
+    "Files": []
+  },
+  {
+    "Id": "12",
+    "Name": "HexgridUtilities V 6.3",
+    "DevelopmentStatus": "Stable",
+    "Description": "# Finished pushing functionality from HexgridExample into HexPanel;\n# Expanded Doxygen documentation considerably, including class diagrams;  \n# Enabled freezing of FOV with a Range-Line to verify line-of-sight; \n# Implemented Async versions of GetPath and GetFOV;\n# Fixed display performance from nesting a call to SystemFonts; and\n# Numerous additional small enhancements and tidy-up.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-08-05T12:23:06.417-07:00",
+    "Files": [
+      {
+        "Id": "0511e466-58b6-4d90-8d33-a47f76317d28",
+        "FileName": "HexgridUtilities V6.3 Binaries.zip",
+        "Url": "./12/0511e466-58b6-4d90-8d33-a47f76317d28",
+        "Type": "Application",
+        "UploadDate": "2013-08-02T23:52:11.04-07:00"
+      },
+      {
+        "Id": "0215bc35-e309-4243-8432-bd618116668b",
+        "FileName": "HexgridUtilities V 6.3 Source.zip",
+        "Url": "./12/0215bc35-e309-4243-8432-bd618116668b",
+        "Type": "Source Code",
+        "UploadDate": "2013-08-02T23:52:11.103-07:00"
+      },
+      {
+        "Id": "d9fa9baf-1f21-4467-8ac3-cd337646c6c2",
+        "FileName": "HexgridUtilities V 6.3 Documentation.zip",
+        "Url": "./12/d9fa9baf-1f21-4467-8ac3-cd337646c6c2",
+        "Type": "Documentation",
+        "UploadDate": "2013-08-02T23:52:11.213-07:00"
+      },
+      {
+        "Id": "4d295104-9c72-49ce-a79e-19485aa3984a",
+        "FileName": "HexgridUtilities.chm",
+        "Url": "./12/4d295104-9c72-49ce-a79e-19485aa3984a",
+        "Type": "Documentation",
+        "UploadDate": "2013-08-05T12:23:05.743-07:00"
+      }
+    ]
+  }
+]

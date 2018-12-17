@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1047999",
+    "ThreadId": "444821",
+    "Html": "Although the change in <strong>HexCoords.cs</strong> (change-set # 24934) produced only a <strong>12-15%</strong> reduction in Path Finding time, I found 4 additional places in my game engine to apply the same optimization. <br />\n<br />\nThis reduced the time to find the longest diagonal path on my largest  game map (~450 x 750 hexes) from 2.6 sec. to 1.2 sec (about <strong>55%</strong>). <br />\n<br />\nThe change was from this code:<br />\n<pre><code>  protected override IEnumerable&lt;NeighbourCoords&gt; GetNeighbours(Hexside hexsides) {\n    ICoords coords = this;\n    foreach (Hexside hexside in Enum.GetValues(typeof(Hexside)))\n      if (hexside != Hexside.None  &amp;&amp;  hexsides.HasFlag(hexside)) \n        yield return new NeighbourCoords(hexside, coords.StepOut(hexside));\n  }\n</code></pre>\n\nto this:<br />\n<pre><code>  static readonly List&lt;Hexside&gt; HexsideList\n               = Utils.EnumGetValues&lt;Hexside&gt;().Where(h=&gt;h!=Hexside.None).ToList();\n\n  protected override IEnumerable&lt;NeighbourCoords&gt; GetNeighbours(Hexside hexsides) {\n    ICoords coords = this;\n    foreach (var hexside in HexsideList.Where(h=&gt;hexsides.HasFlag(h)))\n      yield return new NeighbourCoords(hexside, coords.StepOut(hexside));\n  }\n</code></pre>\n\n<strong>LINQ</strong> is great for writing readable code, but you have to be careful how and when you use it in deeply nested loops.<br />\n<br />\nNote also that  \n<br />\n<pre><code>Utils.EnumGetValues&lt;Hexside&gt;().</code></pre>\n\nuses one of the enclosed utility extension methods to perform a completely type-safe equivalent of <br />\n<pre><code>Enum.GetValues(typeof(Hexside)</code></pre>\n\n",
+    "PostedDate": "2013-05-23T15:35:16.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This seems to work nicely.",
+    "ClosedDate": "2013-08-02T06:57:59.437-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Thread Exception Handler Line 50: use Result.",
+    "LastUpdatedDate": "2013-08-02T06:57:59.437-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "HexGridUtilities",
+    "ReportedDate": "2013-06-20T19:59:29.17-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "CA1804 : Remove unused locals in ThreadExceptionHandler.cs",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 0,
+    "Id": 900
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Description: CA1804 : Microsoft.Performance : 'ThreadExceptionHandler.ApplicationThreadException(object, ThreadExceptionEventArgs)' declares a variable, 'result', of type 'DialogResult', which is never used or is only assigned to. Use this variable or remove it.\nFile: ThreadExceptionHandler.cs\nLine: 50\nProject: HexgridPanel\n\n",
+      "PostedDate": "2013-06-20T19:59:29.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-08-02T06:57:59.437-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

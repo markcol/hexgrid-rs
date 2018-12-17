@@ -1,0 +1,13 @@
+<div class="wikidoc">With our easy coordinate transformation to- and from-Canonical coordinates, this becomes dead simple:<br /><br />From <b>Coords.cs</b>:<br /><pre>
+    private int Range(ICoordsCanon coords) {
+      var deltaX = coords.X - VectorCanon.X;
+      var deltaY = coords.Y - VectorCanon.Y;
+      return (Math.Abs(deltaX) + Math.Abs(deltaY) + Math.Abs(deltaX-deltaY)) / 2;
+    }
+</pre><br />Invoking this method is as simple as this code fragement from <b>hexgridPanel_MouseMove</b>:<br /><pre>
+void hexgridPanel_MouseMove(object sender, MouseEventArgs e) {
+  HotSpotHex = hexgridPanel.GetHexCoords(e.Location).User;
+  Range      = CurrentHex.Range(HotSpotHex);
+  // etc.
+}
+</pre><br />This internal method is aliased, with the same name and signature, in all three of the Coordinate interfaces: <b>ICoordsCanon</b>, <b>ICoordsUser</b>, and <b>ICoordsCustom</b>.<br /><br />The proof of this formula (in <i>Canonical</i> coordinates) is readiy available all over the web; I will not repeat it here. Note that this variant of the formual is for X- and Y-axes at 120 degrees; the formula varies slightly if they are chosen at 60 degrees instead.</div><div class="ClearBoth"></div>

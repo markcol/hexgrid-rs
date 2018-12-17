@@ -1,0 +1,73 @@
+<div class="wikidoc">As can readily be seen from the following code, the class <b></b>HexCoords** completely hides the conversion between Rectangular (or User) coordinates and the Canon(ical) coordinate system with axes at 120 degrees. One simply creates an instance of HexCoords in the frame-of-reference available, and allows the data-type to supply either as needed. <br /><br />Lazy initialization of the frame of reference <b>not</b> supplied on construction trades a small amount of space (for two Boolean flags) for avoidance of conversions when one is not moving to a new reference frame.<br /><br />Let&#39;s look at this code fragment from <b>HeCoords.cs</b>:<br /><br /><pre>
+/// &lt;summary&gt;Create a new instance located at the specified x and y offsets 
+/// as interpreted in the Canon(ical) frame.&lt;/summary&gt;
+public static HexCoords NewCanonCoords (int x, int y) { 
+  return new HexCoords(true,  x, y); 
+}
+
+/// &lt;summary&gt;Create a new instance located at the specified x and y offsets 
+/// as interpreted in the ectangular (User) frame.&lt;/summary&gt;
+public static HexCoords NewUserCoords  (int x, int y) { 
+  return new HexCoords(false, x, y); 
+}
+
+static readonly IntMatrix2D MatrixUserToCanon = new IntMatrix2D(2, 1,  0,2,  0,0,  2);
+static readonly IntMatrix2D MatrixCanonToUser = new IntMatrix2D(2,-1,  0,2,  0,1,  2);
+
+#region Constructors
+private HexCoords(bool isCanon, int x, int y) : this(isCanon, new IntVector2D(x,y)) {}
+private HexCoords(bool isCanon, IntVector2D vector) : this() {
+  if (isCanon) { Canon = vector; userHasValue  = false; }
+  else         { User  = vector; canonHasValue = false; }
+}
+#endregion
+
+#region Properties
+/// &lt;summary&gt;Returns an &lt;c&gt;IntVector2D&lt;/c&gt; representing the Canonical (obtuse) 
+/// coordinates of this hex.&lt;/summary&gt;
+ public  IntVector2D Canon {
+  get { return canonHasValue ? _Canon : ( Canon = _User * MatrixUserToCanon); }
+  set { _Canon = value; canonHasValue = true; userHasValue = false; }
+} private IntVector2D _Canon;
+bool canonHasValue;
+
+/// &lt;summary&gt;Returns an &lt;c&gt;IntVector2D&lt;/c&gt; representing the User (rectangular) 
+/// coordinates of this hex.&lt;/summary&gt;
+ public  IntVector2D User  {
+  get { return userHasValue ? _User : ( User = _Canon * MatrixCanonToUser); }
+  set { _User = value;  userHasValue = true; canonHasValue = false; }
+} private IntVector2D _User;
+bool userHasValue;
+#endregion
+</pre><br /><br />Similarly this fragment from CustomCoords.cs illustrates how the simple definition of two matrices (in the case of transposition or reflection, the same matrix twice) adds another frame of reference possibility.<br /><pre>
+public static class CustomCoords {
+
+  /// &lt;summary&gt;Return the coordinate vector of this hex in the Custom frame.&lt;/summary&gt;
+  public static IntVector2D UserToCustom(this HexCoords @this) {
+    return @this.User * MatrixUserToCustom;
+  }
+  /// &lt;summary&gt;Return the coordinate vector of this hex in the User frame.&lt;/summary&gt;
+  public static HexCoords CustomToUser(this IntVector2D @this) {
+    return HexCoords.NewUserCoords(@this * MatrixUserToCustom);
+  }
+
+  /// &lt;summary&gt;Initialize the conversion matrices for the Custom coordinate
+  /// frame.&lt;/summary&gt;
+  public static void SetMatrices(IntMatrix2D matrix) { SetMatrices(matrix,matrix); }
+
+  /// &lt;summary&gt;Initialize the conversion matrices for the Custom coordinate
+  /// frame.&lt;/summary&gt;
+  public static void SetMatrices(IntMatrix2D userToCustom, IntMatrix2D customToUser) {
+    MatrixUserToCustom = userToCustom;
+    MatrixCustomToUser = customToUser;
+  }
+
+  /// &lt;summary&gt;Gets the conversion matrix from Custom to Rectangular (User) 
+  /// coordinates.&lt;/summary&gt;
+  public static IntMatrix2D MatrixCustomToUser { get; private set; }
+
+  /// &lt;summary&gt;Gets the conversion matrix from Rectangular (User) to Custom
+ /// coordinates.&lt;/summary&gt;
+  public static IntMatrix2D MatrixUserToCustom { get; private set; }
+}
+</pre></div><div class="ClearBoth"></div>

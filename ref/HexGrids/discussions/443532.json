@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1043089",
+    "ThreadId": "443532",
+    "Html": "This library is superb ....\r<br />\n<br />\nCannot believe you have done all this - outstanding.\r<br />\n<br />\nRe your comment about the ratings though ... I dont seem to be able to set one - clicking on the stars doesnt work ...<br />\n",
+    "PostedDate": "2013-05-13T14:51:53.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1043149",
+    "ThreadId": "443532",
+    "Html": "Thank you for the compliment. I built all of this as just infra-structure for my Napoleonic game engine, but it is general enough that I don't see it fostering competition; so here it is for the world to enjoy. \r<br />\n<br />\nI will try to follow up with CodePlex about the ratings not working.\r<br />\n<br />\nPieter<br />\n",
+    "PostedDate": "2013-05-13T20:01:38.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1043151",
+    "ThreadId": "443532",
+    "Html": "Found it! \r<br />\n<br />\nOn the Downloads page, select <strong>Review This Release</strong>; you will be presented with a dialog box where you can rate the release, and comment on it.<br />\n",
+    "PostedDate": "2013-05-13T20:10:34.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
