@@ -27,6 +27,6 @@ tags
 .idea
 *.iml
 
-ref/**.cache
-ref/**.json
-ref/**.lref
+/ref/**/*.cache
+/ref/**/*.json
+/ref/**/*.lref
