@@ -1,6 +1,6 @@
 # hexgrid-rs
 
-[![Build Status](https://api.travis-ci.org/markcol/hexgrid-rs.svg)](https://travis-ci.com/markcol/hexgrid-rs)
+[![Build Status](https://api.travis-ci.org/markcol/hexgrid-rs.svg)](https://travis-ci.org/markcol/hexgrid-rs)
 
 A library to work with hex grids written in Rust.
 

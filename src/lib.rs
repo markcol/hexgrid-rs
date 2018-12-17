@@ -29,9 +29,9 @@
 )]
 
 use std::ops::{Add, AddAssign};
-use std::ops::{Sub, SubAssign};
-use std::ops::{Mul, MulAssign};
 use std::ops::{Div, DivAssign};
+use std::ops::{Mul, MulAssign};
+use std::ops::{Sub, SubAssign};
 
 #[derive(Debug, PartialEq)]
 pub struct Hex {
@@ -41,12 +41,8 @@ pub struct Hex {
 }
 
 impl Hex {
-    pub fn new(q: i32, r:i32, s:i32) -> Self {
-        Hex {
-            q,
-            r,
-            s,
-        }
+    pub fn new(q: i32, r: i32, s: i32) -> Self {
+        Hex { q, r, s }
     }
 
     pub fn distance(self, other: Hex) -> usize {
@@ -95,7 +91,6 @@ impl SubAssign for Hex {
     }
 }
 
-
 impl Div for Hex {
     type Output = Hex;
 
@@ -115,7 +110,6 @@ impl DivAssign for Hex {
         self.s /= other.s;
     }
 }
-
 
 impl Mul for Hex {
     type Output = Hex;
@@ -157,55 +151,67 @@ mod tests {
 
     #[test]
     fn add() {
-        assert_eq!(Hex{q:1,r:2,s:3} + Hex{q:4,r:5,s:6}, Hex{q:5,r:7,s:9});
+        assert_eq!(
+            Hex { q: 1, r: 2, s: 3 } + Hex { q: 4, r: 5, s: 6 },
+            Hex { q: 5, r: 7, s: 9 }
+        );
     }
 
     #[test]
     fn add_assign() {
         let mut a = Hex::new(1, 2, 3);
-        a += Hex{q: 4, r:5, s:6};
-        assert_eq!(a, Hex{q:5,r:7,s:9});
+        a += Hex { q: 4, r: 5, s: 6 };
+        assert_eq!(a, Hex { q: 5, r: 7, s: 9 });
     }
 
     #[test]
     fn sub() {
-        assert_eq!(Hex{q:5,r:7,s:9} - Hex{q:4,r:5,s:6}, Hex{q:1,r:2,s:3});
+        assert_eq!(
+            Hex { q: 5, r: 7, s: 9 } - Hex { q: 4, r: 5, s: 6 },
+            Hex { q: 1, r: 2, s: 3 }
+        );
     }
 
     #[test]
     fn sub_assign() {
         let mut a = Hex::new(5, 7, 9);
-        a -= Hex{q: 4, r:5, s:6};
-        assert_eq!(a, Hex{q:1,r:2,s:3});
+        a -= Hex { q: 4, r: 5, s: 6 };
+        assert_eq!(a, Hex { q: 1, r: 2, s: 3 });
     }
 
     #[test]
     fn div() {
-        assert_eq!(Hex{q:20,r:35,s:54} / Hex{q:4,r:5,s:6}, Hex{q:5,r:7,s:9});
+        assert_eq!(
+            Hex { q: 20, r: 35, s: 54 } / Hex { q: 4, r: 5, s: 6 },
+            Hex { q: 5, r: 7, s: 9 }
+        );
     }
 
     #[test]
     fn div_assign() {
         let mut a = Hex::new(20, 35, 54);
-        a /= Hex{q: 4, r:5, s:6};
-        assert_eq!(a, Hex{q:5,r:7,s:9});
+        a /= Hex { q: 4, r: 5, s: 6 };
+        assert_eq!(a, Hex { q: 5, r: 7, s: 9 });
     }
 
     #[test]
     fn mul() {
-        assert_eq!(Hex{q:5,r:7,s:9} * Hex{q:4,r:5,s:6}, Hex{q:20,r:35,s:54});
+        assert_eq!(
+            Hex { q: 5, r: 7, s: 9 } * Hex { q: 4, r: 5, s: 6 },
+            Hex { q: 20, r: 35, s: 54 }
+        );
     }
 
     #[test]
     fn mul_assign() {
         let mut a = Hex::new(5, 7, 9);
-        a *= Hex{q: 4, r:5, s:6};
-        assert_eq!(a, Hex{q:20,r:35,s:54});
+        a *= Hex { q: 4, r: 5, s: 6 };
+        assert_eq!(a, Hex { q: 20, r: 35, s: 54 });
     }
 
     #[test]
     fn distance() {
         let a = Hex::new(5, 7, 9);
-        assert_eq!(a.distance(Hex{q: 4, r:5, s: 6}), 3);
+        assert_eq!(a.distance(Hex { q: 4, r: 5, s: 6 }), 3);
     }
 }

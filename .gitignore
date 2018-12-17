@@ -26,3 +26,7 @@ tags
 *.swp
 .idea
 *.iml
+
+ref/**.cache
+ref/**.json
+ref/**.lref
