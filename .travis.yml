@@ -1,0 +1,40 @@
+language: rust
+
+os:
+  - linux
+  - osx
+  - windows
+
+rust:
+  - stable
+  - beta
+  - nightly
+
+matrix:
+  allow_failures:
+    - rust: nightly
+  fast_finish: true
+
+cache: 
+  cargo: true
+
+git:
+  depth: 1
+  quiet: true
+
+branches:
+  only:
+    - master
+    
+env:
+ global:
+   - RUST_BACKTRACE=1
+
+before_script:
+  - rustup component add clippy-preview
+
+script: 
+  - cargo build --verbose
+  - cargo doc --verbose
+  - cargo test --verbose
+  - cargo clippy --all-targets --all-features -- -D warnings

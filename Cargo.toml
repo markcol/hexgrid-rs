@@ -1,0 +1,18 @@
+[package]
+name = "hexgrid"
+version = "0.1.0"
+edition = "2018"
+authors = ["Mark H. Colburn <colburn.mark@gmail.com>"]
+description = "A library to work with hex grids in Rust."
+repository = "https://github.com/markcol/hexgrid-rs"
+# A list of up to 5 categories from https://crates.io/category_slugs. Must match exactly.
+categories = ["game-engines", "algorithms"]
+# A list of up to 5 keywords (free-form),
+keywords = ["hex", "grid", "games"]
+readme = "README.md"
+license = "MIT"
+
+[badges]
+travis-ci = { repository = "markcol/hexgrid-rs", branch = "master" }
+
+[dependencies]
