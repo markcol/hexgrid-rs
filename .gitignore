@@ -27,6 +27,6 @@ tags
 .idea
 *.iml
 
-/ref/**/*.csproj.CoreCompileInputs.cache
+/ref/**/*.cache
 /ref/**/*.json
 /ref/**/*.lref
