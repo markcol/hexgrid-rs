@@ -1,6 +1,0 @@
-[package]
-name = "hex"
-version = "0.1.0"
-authors = ["Mark H. Colburn <mark.h.colburn@oracle.com>"]
-
-[dependencies]
