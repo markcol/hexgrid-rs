@@ -1,9 +1,5 @@
+sudo: false
 language: rust
-
-os:
-  - linux
-  - osx
-  - windows
 
 rust:
   - stable
@@ -15,12 +11,14 @@ matrix:
     - rust: nightly
   fast_finish: true
 
-cache: 
-  cargo: true
+os:
+  - linux
+  - osx
+  - windows
 
-git:
-  depth: 1
-  quiet: true
+cache:
+  directories:
+    - $HOME/.cargo
 
 branches:
   only:
@@ -32,9 +30,12 @@ env:
 
 before_script:
   - rustup component add clippy-preview
+  - rustup component add rustfmt
 
 script: 
+  # Have rustfmt exit with error code if input is not formatted correctly.
+  - cargo fmt --all -- --check
   - cargo build --verbose
   - cargo doc --verbose
-  - cargo test --verbose
+  - cargo test --locked --verbose
   - cargo clippy --all-targets --all-features #  -D warnings
