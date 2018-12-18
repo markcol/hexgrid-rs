@@ -28,10 +28,7 @@
     clippy::too_many_arguments
 )]
 
-use std::ops::{Add, AddAssign};
-use std::ops::{Div, DivAssign};
-use std::ops::{Mul, MulAssign};
-use std::ops::{Sub, SubAssign};
+use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Sub, SubAssign};
 
 /// Representation of a specific hex location.
 #[derive(Debug, PartialEq, Copy, Clone)]
