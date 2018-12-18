@@ -6,7 +6,7 @@
     clippy::all,
     rust_2018_idioms,
     intra_doc_link_resolution_failure,
-    missing_copy_implementations,
+    // missing_copy_implementations,
     missing_debug_implementations,
     path_statements,
     trivial_bounds,
@@ -28,7 +28,10 @@
     clippy::too_many_arguments
 )]
 
+// use log::{debug, error, info, trace, warn};
 use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Sub, SubAssign};
+
+pub mod error;
 
 /// Representation of a specific hex location.
 #[derive(Debug, PartialEq, Copy, Clone)]

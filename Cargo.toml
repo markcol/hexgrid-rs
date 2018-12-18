@@ -16,3 +16,7 @@ keywords = ["hex", "grid", "games"]
 travis-ci = { repository = "markcol/hexgrid-rs", branch = "master" }
 
 [dependencies]
+failure = "0.1"
+log = "0.4"
+pretty_env_logger = "0.3"
+derive_more = "0.13"
