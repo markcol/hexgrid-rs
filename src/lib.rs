@@ -1,31 +1,34 @@
 //! A library to work with hex grids written in Rust.
 
-#![forbid(overflowing_literals)]
+#![forbid(
+    overflowing_literals,
+    unsafe_code,
+)]
 #![warn(
-    missing_docs,
+    bad_style,
     clippy::all,
-    rust_2018_idioms,
+    future_incompatible,
     intra_doc_link_resolution_failure,
     // missing_copy_implementations,
     missing_debug_implementations,
+    missing_docs,
     path_statements,
+    rust_2018_compatibility,
+    rust_2018_idioms,
+    rust_2018_idioms,
     trivial_bounds,
     type_alias_bounds,
     unconditional_recursion,
     unions_with_drop_fields,
+    unused,
     while_true,
-    bad_style,
-    future_incompatible,
-    rust_2018_compatibility,
-    rust_2018_idioms,
-    unused
 )]
 #![allow(
-    dead_code,
-    unknown_lints,
     clippy::cyclomatic_complexity,
     clippy::needless_pass_by_value,
-    clippy::too_many_arguments
+    clippy::too_many_arguments,
+    dead_code,
+    unknown_lints,
 )]
 
 // use log::{debug, error, info, trace, warn};
@@ -97,46 +100,6 @@ impl SubAssign for Hex {
     }
 }
 
-impl Div for Hex {
-    type Output = Hex;
-
-    fn div(self, other: Hex) -> Hex {
-        Hex {
-            q: self.q / other.q,
-            r: self.r / other.r,
-            s: self.s / other.s,
-        }
-    }
-}
-
-impl DivAssign for Hex {
-    fn div_assign(&mut self, other: Hex) {
-        self.q /= other.q;
-        self.r /= other.r;
-        self.s /= other.s;
-    }
-}
-
-impl Mul for Hex {
-    type Output = Hex;
-
-    fn mul(self, other: Hex) -> Hex {
-        Hex {
-            q: self.q * other.q,
-            r: self.r * other.r,
-            s: self.s * other.s,
-        }
-    }
-}
-
-impl MulAssign for Hex {
-    fn mul_assign(&mut self, other: Hex) {
-        self.q *= other.q;
-        self.r *= other.r;
-        self.s *= other.s;
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -183,36 +146,6 @@ mod tests {
         let mut a = Hex::new(5, 7, 9);
         a -= Hex { q: 4, r: 5, s: 6 };
         assert_eq!(a, Hex { q: 1, r: 2, s: 3 });
-    }
-
-    #[test]
-    fn div() {
-        assert_eq!(
-            Hex { q: 20, r: 35, s: 54 } / Hex { q: 4, r: 5, s: 6 },
-            Hex { q: 5, r: 7, s: 9 }
-        );
-    }
-
-    #[test]
-    fn div_assign() {
-        let mut a = Hex::new(20, 35, 54);
-        a /= Hex { q: 4, r: 5, s: 6 };
-        assert_eq!(a, Hex { q: 5, r: 7, s: 9 });
-    }
-
-    #[test]
-    fn mul() {
-        assert_eq!(
-            Hex { q: 5, r: 7, s: 9 } * Hex { q: 4, r: 5, s: 6 },
-            Hex { q: 20, r: 35, s: 54 }
-        );
-    }
-
-    #[test]
-    fn mul_assign() {
-        let mut a = Hex::new(5, 7, 9);
-        a *= Hex { q: 4, r: 5, s: 6 };
-        assert_eq!(a, Hex { q: 20, r: 35, s: 54 });
     }
 
     #[test]

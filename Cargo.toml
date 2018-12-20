@@ -10,13 +10,23 @@ license = "MIT"
 # A list of up to 5 categories from https://crates.io/category_slugs. Must match exactly.
 categories = ["game-engines", "algorithms"]
 # A list of up to 5 keywords (free-form),
-keywords = ["hex", "grid", "games"]
+keywords = ["hexgrid", "hex", "grid", "games"]
+exclude = [
+    ".github/*",
+    "doc/*",
+    "ref/*",
+    ".clippy.toml",
+    ".editorconfig",
+    ".rustfmt.toml",
+    ".travis.yml"
+]
+publish = false
 
 [badges]
 travis-ci = { repository = "markcol/hexgrid-rs", branch = "master" }
+coveralls = { repository = "markcol/hexgrid-rs", branch = "master", service = "github" }
 
 [dependencies]
 failure = "0.1"
 log = "0.4"
-pretty_env_logger = "0.3"
 derive_more = "0.13"
