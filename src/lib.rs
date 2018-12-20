@@ -1,9 +1,6 @@
 //! A library to work with hex grids written in Rust.
 
-#![forbid(
-    overflowing_literals,
-    unsafe_code,
-)]
+#![forbid(overflowing_literals, unsafe_code)]
 #![warn(
     bad_style,
     clippy::all,
@@ -28,7 +25,7 @@
     clippy::needless_pass_by_value,
     clippy::too_many_arguments,
     dead_code,
-    unknown_lints,
+    unknown_lints
 )]
 
 // use log::{debug, error, info, trace, warn};
